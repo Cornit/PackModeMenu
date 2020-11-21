@@ -43,6 +43,7 @@ public final class ConfigScreen extends GuiScreen {
         switchBtn = new GuiButtonExt(0, width / 2 - 100, height / 6 , getButtonText());
         buttonList.add(switchBtn);
         saveBtn = new GuiButtonExt(1, this.width / 2 - 155, this.height / 6 + 120 - 6, 150, 20, "Save");
+        saveBtn.enabled = false;
         this.buttonList.add(saveBtn);
         this.buttonList.add(new GuiButtonExt(2, this.width / 2 + 5, this.height / 6 + 120 - 6, 150, 20, "Cancel"));
         super.initGui();
