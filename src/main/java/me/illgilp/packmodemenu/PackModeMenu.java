@@ -26,7 +26,7 @@ public class PackModeMenu {
 
     public static final String MOD_ID = "packmodemenu";
     public static final String MOD_NAME = "PackModeMenu";
-    public static final String VERSION = "1.0.1";
+    public static final String VERSION = "1.0.2";
 
     @Mod.Instance(MOD_ID)
     public static PackModeMenu INSTANCE;
@@ -71,8 +71,10 @@ public class PackModeMenu {
 
     @SubscribeEvent
     public static void onActionGuiEvent(final GuiScreenEvent.ActionPerformedEvent event) {
-        if (event.getButton().id == optionsButtonId) {
-            Minecraft.getMinecraft().displayGuiScreen(new ConfigScreen(Minecraft.getMinecraft().currentScreen));
+        if (event.getGui() instanceof GuiOptions) {
+            if (event.getButton().id == optionsButtonId) {
+                Minecraft.getMinecraft().displayGuiScreen(new ConfigScreen(Minecraft.getMinecraft().currentScreen));
+            }
         }
     }
 }
