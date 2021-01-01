@@ -27,7 +27,7 @@ public class PackModeMenu {
 
     public static final String MOD_ID = "packmodemenu";
     public static final String MOD_NAME = "PackModeMenu";
-    public static final String VERSION = "1.0.2";
+    public static final String VERSION = "1.0.3";
 
     @Mod.Instance(MOD_ID)
     public static PackModeMenu INSTANCE;
