@@ -1,21 +1,20 @@
 package me.illgilp.packmodemenu;
 
-import java.util.List;
-import java.util.Random;
 import me.illgilp.packmodemenu.gui.ConfigScreen;
-import me.illgilp.packmodemenu.lang.LanguageManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiOptions;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import java.util.List;
+import java.util.Random;
 
 @Mod(
     modid = PackModeMenu.MOD_ID,
@@ -32,11 +31,8 @@ public class PackModeMenu {
     @Mod.Instance(MOD_ID)
     public static PackModeMenu INSTANCE;
 
-    private LanguageManager languageManager;
-
     @Mod.EventHandler
     public void preinit(FMLPreInitializationEvent event) {
-        languageManager = new LanguageManager();
     }
 
     @Mod.EventHandler
@@ -67,7 +63,7 @@ public class PackModeMenu {
                 }
             } while (!ok);
 
-            buttonList.add(new GuiButton(optionsButtonId, gui.width / 2 + 5, gui.height / 6  + 24 - 9, 150, 20, PackModeMenu.INSTANCE.getLanguageManager().getTranslation("packmodemenu.options.pack_mode")));
+            buttonList.add(new GuiButton(optionsButtonId, gui.width / 2 + 5, gui.height / 6  + 24 - 9, 150, 20, I18n.format("packmodemenu.options.pack_mode")));
             event.setButtonList(buttonList);
         }
     }
@@ -79,9 +75,5 @@ public class PackModeMenu {
                 Minecraft.getMinecraft().displayGuiScreen(new ConfigScreen(Minecraft.getMinecraft().currentScreen));
             }
         }
-    }
-
-    public LanguageManager getLanguageManager() {
-        return languageManager;
     }
 }
