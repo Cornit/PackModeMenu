@@ -1,10 +1,5 @@
 package me.illgilp.packmodemenu.gui;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import me.illgilp.packmodemenu.PackModeMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -12,6 +7,11 @@ import net.minecraft.client.resources.I18n;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public final class ConfigScreen extends GuiScreen {
 
@@ -48,10 +48,10 @@ public final class ConfigScreen extends GuiScreen {
         }
         switchBtn = new GuiButtonExt(0, width / 2 - 100, height / 6, getButtonText());
         buttonList.add(switchBtn);
-        saveBtn = new GuiButtonExt(1, this.width / 2 - 155, this.height / 6 + 120 - 6, 150, 20, PackModeMenu.INSTANCE.getLanguageManager().getTranslation("packmodemenu.options.save"));
+        saveBtn = new GuiButtonExt(1, this.width / 2 - 155, this.height / 6 + 120 - 6, 150, 20, I18n.format("packmodemenu.options.save"));
         saveBtn.enabled = !mode.equals(defaultMode);
         this.buttonList.add(saveBtn);
-        this.buttonList.add(new GuiButtonExt(2, this.width / 2 + 5, this.height / 6 + 120 - 6, 150, 20, PackModeMenu.INSTANCE.getLanguageManager().getTranslation("packmodemenu.options.cancel")));
+        this.buttonList.add(new GuiButtonExt(2, this.width / 2 + 5, this.height / 6 + 120 - 6, 150, 20, I18n.format("packmodemenu.options.cancel")));
 
 
         super.initGui();
@@ -59,17 +59,17 @@ public final class ConfigScreen extends GuiScreen {
     }
 
     private String getButtonText() {
-        return PackModeMenu.INSTANCE.getLanguageManager().getTranslation("packmodemenu.options.pack_mode") + ": " + (!mode.equals(defaultMode) ? "§a" : "") + mode.toUpperCase() + (!mode.equals(defaultMode) ? "" : " (" + PackModeMenu.INSTANCE.getLanguageManager().getTranslation("packmodemenu.options.current") + ")");
+        return I18n.format("packmodemenu.options.pack_mode") + ": " + (!mode.equals(defaultMode) ? "§a" : "") + mode.toUpperCase() + (!mode.equals(defaultMode) ? "" : " (" + I18n.format("packmodemenu.options.current") + ")");
     }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         drawDefaultBackground();
-        this.drawCenteredString(this.fontRenderer, PackModeMenu.INSTANCE.getLanguageManager().getTranslation("packmodemenu.options.pack_mode"), this.width / 2, 15, 16777215);
+        this.drawCenteredString(this.fontRenderer, I18n.format("packmodemenu.options.pack_mode"), this.width / 2, 15, 16777215);
 
         if (!mode.equals(defaultMode)) {
-            this.drawCenteredString(this.fontRenderer, PackModeMenu.INSTANCE.getLanguageManager().getTranslation("packmodemenu.options.warning.restart.line1"), this.width / 2, this.height / 6 + 75 - 6, 0xFF5555);
-            this.drawCenteredString(this.fontRenderer, PackModeMenu.INSTANCE.getLanguageManager().getTranslation("packmodemenu.options.warning.restart.line2"), this.width / 2, this.height / 6 + 75 - 6 + 10, 0xFF5555);
+            this.drawCenteredString(this.fontRenderer, I18n.format("packmodemenu.options.warning.restart.line1"), this.width / 2, this.height / 6 + 75 - 6, 0xFF5555);
+            this.drawCenteredString(this.fontRenderer, I18n.format("packmodemenu.options.warning.restart.line2"), this.width / 2, this.height / 6 + 75 - 6 + 10, 0xFF5555);
         }
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
