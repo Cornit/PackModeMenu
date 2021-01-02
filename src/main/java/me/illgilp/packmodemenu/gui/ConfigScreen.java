@@ -48,11 +48,10 @@ public final class ConfigScreen extends GuiScreen {
         }
         switchBtn = new GuiButtonExt(0, width / 2 - 100, height / 6, getButtonText());
         buttonList.add(switchBtn);
-        saveBtn = new GuiButtonExt(1, this.width / 2 - 155, this.height / 6 + 160 - 6, 150, 20, I18n.format("packmodemenu.options.save"));
+        saveBtn = new GuiButtonExt(1, this.width / 2 - 155, this.height - 50, 150, 20, I18n.format("packmodemenu.options.save"));
         saveBtn.enabled = !mode.equals(defaultMode);
         this.buttonList.add(saveBtn);
-        this.buttonList.add(new GuiButtonExt(2, this.width / 2 + 5, this.height / 6 + 160 - 6, 150, 20, I18n.format("packmodemenu.options.cancel")));
-
+        this.buttonList.add(new GuiButtonExt(2, this.width / 2 + 5, this.height - 50, 150, 20, I18n.format("packmodemenu.options.cancel")));
 
         super.initGui();
         firstInit = false;
@@ -82,7 +81,7 @@ public final class ConfigScreen extends GuiScreen {
                 textMultiline.append(ChatFormatting.RED).append(line).append("\n");
             }
         }
-        this.drawMultilineString(textMultiline.toString(), this.width / 2, this.height / 6 + 50 - 6, 0xffffff);
+        this.drawMultilineString(textMultiline.toString(), this.width / 2, this.height / 6 + 40 - 6, 0xffffff);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
