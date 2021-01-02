@@ -1,4 +1,3 @@
-#PARSE_ESCAPES
 packmodemenu.options.pack_mode=Pack-Mode
 packmodemenu.options.save=Save
 packmodemenu.options.cancel=Cancel
