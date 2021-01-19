@@ -2,5 +2,4 @@ packmodemenu.options.pack_mode=Pack-Modus
 packmodemenu.options.save=Speichern
 packmodemenu.options.cancel=Abbrechen
 packmodemenu.options.current=aktuell
-packmodemenu.options.warning.restart.line1=Nach dem Speichern muss das Spiel neugestartet
-packmodemenu.options.warning.restart.line2=werden, damit die Änderungen übernommen werden.
+packmodemenu.options.warning.restart=Nach dem Speichern muss das Spiel neugestartet\nwerden, damit die Änderungen übernommen werden.
