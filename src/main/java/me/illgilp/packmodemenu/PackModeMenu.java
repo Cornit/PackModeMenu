@@ -19,7 +19,8 @@ import java.util.Random;
 @Mod(
     modid = PackModeMenu.MOD_ID,
     name = PackModeMenu.MOD_NAME,
-    version = PackModeMenu.VERSION
+    version = PackModeMenu.VERSION,
+    clientSideOnly = true
 )
 @Mod.EventBusSubscriber
 public class PackModeMenu {
