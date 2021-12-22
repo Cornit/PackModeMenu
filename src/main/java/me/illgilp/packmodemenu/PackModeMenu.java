@@ -1,20 +1,11 @@
 package me.illgilp.packmodemenu;
 
-import me.illgilp.packmodemenu.gui.ConfigScreen;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiOptions;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-import net.minecraftforge.client.event.GuiScreenEvent;
+import me.illgilp.packmodemenu.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.List;
-import java.util.Random;
 
 @Mod(
     modid = PackModeMenu.MOD_ID,
@@ -27,54 +18,26 @@ public class PackModeMenu {
 
     public static final String MOD_ID = "packmodemenu";
     public static final String MOD_NAME = "PackModeMenu";
-    public static final String VERSION = "1.0.5";
+    public static final String VERSION = "1.0.6";
 
     @Mod.Instance(MOD_ID)
     public static PackModeMenu INSTANCE;
 
+    @SidedProxy(clientSide = "me.illgilp.packmodemenu.proxy.ClientProxy")
+    private static CommonProxy commonProxy;
+
     @Mod.EventHandler
     public void preinit(FMLPreInitializationEvent event) {
+        commonProxy.preInit(event);
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-
+        commonProxy.init(event);
     }
 
     @Mod.EventHandler
     public void postinit(FMLPostInitializationEvent event) {
-
-    }
-
-    private static int optionsButtonId = 0;
-
-    @SubscribeEvent
-    public static void onInitGuiEvent(final GuiScreenEvent.InitGuiEvent event) {
-        final GuiScreen gui = event.getGui();
-        if (gui instanceof GuiOptions) {
-            List<GuiButton> buttonList = event.getButtonList();
-            boolean ok = true;
-            do {
-                optionsButtonId = new Random().nextInt(Integer.MAX_VALUE);
-                for (final GuiButton button : buttonList) {
-                    if (button.id == optionsButtonId) {
-                        ok = false;
-                        break;
-                    }
-                }
-            } while (!ok);
-
-            buttonList.add(new GuiButton(optionsButtonId, gui.width / 2 + 5, gui.height / 6  + 24 - 9, 150, 20, I18n.format("packmodemenu.options.pack_mode")));
-            event.setButtonList(buttonList);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onActionGuiEvent(final GuiScreenEvent.ActionPerformedEvent event) {
-        if (event.getGui() instanceof GuiOptions) {
-            if (event.getButton().id == optionsButtonId) {
-                Minecraft.getMinecraft().displayGuiScreen(new ConfigScreen(Minecraft.getMinecraft().currentScreen));
-            }
-        }
+        commonProxy.postInit(event);
     }
 }
